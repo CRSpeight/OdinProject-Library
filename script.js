@@ -24,7 +24,11 @@ function render() {
     title.textContent = e.title;
     author.textContent = "By " + e.author;
     pages.textContent = "Pages: " + e.pages;
-    read.textContent = e.read;
+    if (e.read) {
+      read.textContent = "Read";
+    } else {
+      read.textContent = "Unread";
+    }
     div.appendChild(title);
     div.appendChild(author);
     div.appendChild(pages);
@@ -36,4 +40,5 @@ function render() {
 addBookToLibrary("John Henry", "Hiroshima", 150, false);
 addBookToLibrary("Crichton", "The Lost World", 200, true);
 addBookToLibrary("Brandon Sanderson", "The Way of Kings", 352, false);
+
 render();
