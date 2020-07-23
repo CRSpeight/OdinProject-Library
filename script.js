@@ -29,6 +29,7 @@ function render() {
     const pages = document.createElement("p");
     const read = document.createElement("p");
     const deleteBtn = document.createElement("button");
+    const toggleBtn = document.createElement("button");
     title.textContent = e.title;
     author.textContent = "By " + e.author;
     pages.textContent = "Pages: " + e.pages;
@@ -41,10 +42,15 @@ function render() {
     deleteBtn.dataset.index = i;
     deleteBtn.classList.add("deleteBtn");
 
+    toggleBtn.textContent = "Toggle Read";
+    toggleBtn.dataset.index = i;
+    toggleBtn.classList.add("toggleBtn");
+
     div.appendChild(title);
     div.appendChild(author);
     div.appendChild(pages);
     div.appendChild(read);
+    div.appendChild(toggleBtn);
     div.appendChild(deleteBtn);
     container.appendChild(div);
   });
@@ -64,6 +70,13 @@ function render() {
     b.addEventListener("click", () => {
       myLibrary.splice(b.getAttribute("data-index"), 1);
       render();
+    });
+  });
+
+  const toggleButtons = document.querySelectorAll(".toggleBtn");
+  toggleButtons.forEach((b) => {
+    b.addEventListener("click", () => {
+      myLibrary[b.getAttribute("data-index")].toggleRead();
     });
   });
 }
