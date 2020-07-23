@@ -23,6 +23,7 @@ function render() {
     const author = document.createElement("p");
     const pages = document.createElement("p");
     const read = document.createElement("p");
+    const deleteBtn = document.createElement("button");
     title.textContent = e.title;
     author.textContent = "By " + e.author;
     pages.textContent = "Pages: " + e.pages;
@@ -31,10 +32,14 @@ function render() {
     } else {
       read.textContent = "Unread";
     }
+    deleteBtn.textContent = "X";
+    deleteBtn.classList.add("deleteBtn");
+
     div.appendChild(title);
     div.appendChild(author);
     div.appendChild(pages);
     div.appendChild(read);
+    div.appendChild(deleteBtn);
     container.appendChild(div);
   });
 
@@ -42,6 +47,7 @@ function render() {
   div.classList.add("bookCard", "newBookCard");
   const newButton = document.createElement("button");
   newButton.textContent = "New Book";
+  newButton.classList.add("newBtn");
   div.appendChild(newButton);
   container.appendChild(div);
   newButton.onclick = () => renderForm();
