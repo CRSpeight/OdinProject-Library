@@ -16,7 +16,7 @@ function addBookToLibrary(author, title, pages, read) {
 
 function render() {
   container.innerHTML = "";
-  myLibrary.forEach(function (e) {
+  myLibrary.forEach(function (e, i) {
     const div = document.createElement("div");
     div.classList.add("bookCard");
     const title = document.createElement("h3");
@@ -33,6 +33,7 @@ function render() {
       read.textContent = "Unread";
     }
     deleteBtn.textContent = "X";
+    deleteBtn.dataset.index = i;
     deleteBtn.classList.add("deleteBtn");
 
     div.appendChild(title);
@@ -52,6 +53,14 @@ function render() {
   container.appendChild(div);
   newButton.onclick = () => renderForm();
   showNewBook = !showNewBook;
+
+  const deleteButtons = document.querySelectorAll(".deleteBtn");
+  deleteButtons.forEach((b) => {
+    b.addEventListener("click", () => {
+      myLibrary.splice(b.getAttribute("data-index"), 1);
+      render();
+    });
+  });
 }
 
 function renderForm() {
