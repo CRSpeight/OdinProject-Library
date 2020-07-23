@@ -9,6 +9,11 @@ function Book(author, title, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+  render();
+};
+
 function addBookToLibrary(author, title, pages, read) {
   let book = new Book(author, title, pages, read);
   myLibrary.push(book);
