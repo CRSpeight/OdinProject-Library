@@ -1,5 +1,5 @@
 .bookCard {
-  background-color: rgb(214, 214, 214);
+  background-color: #fff3cd;
   padding: 10px 30px;
   margin: 5px;
   border-style: solid;
@@ -15,7 +15,7 @@
 }
 
 body {
-  background-color: darkcyan;
+  background-color: #4d3e3e;
   padding: 0px 2rem;
 }
 
@@ -27,5 +27,5 @@ body {
 
 h1 {
   text-align: center;
-  color: rgb(241, 241, 241);
+  color: white;
 }

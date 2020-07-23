@@ -86,7 +86,7 @@ function renderForm() {
         this.form.author.value,
         this.form.title.value,
         this.form.pages.value,
-        this.form.read.value
+        this.form.read.checked
       );
       render();
     });
