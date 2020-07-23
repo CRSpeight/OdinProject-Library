@@ -1,4 +1,4 @@
-let showNewBook = true;
+let showNewBook = false;
 const container = document.querySelector("#container");
 let myLibrary = [];
 
@@ -52,7 +52,7 @@ function render() {
   div.appendChild(newButton);
   container.appendChild(div);
   newButton.onclick = () => renderForm();
-  showNewBook = !showNewBook;
+  showNewBook = false;
 
   const deleteButtons = document.querySelectorAll(".deleteBtn");
   deleteButtons.forEach((b) => {
