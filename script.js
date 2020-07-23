@@ -1,6 +1,5 @@
-let showNewBook = false;
+let showNewBook = true;
 const container = document.querySelector("#container");
-let newBookBtn = document.querySelector(".newBookCard");
 let myLibrary = [];
 
 function Book(author, title, pages, read) {
@@ -41,41 +40,56 @@ function render() {
 
   const div = document.createElement("div");
   div.classList.add("bookCard", "newBookCard");
-  const title = document.createElement("h3");
-  title.textContent = "New Book";
-  div.appendChild(title);
+  const newButton = document.createElement("button");
+  newButton.textContent = "New Book";
+  div.appendChild(newButton);
   container.appendChild(div);
-
-  newBookBtn = document.querySelector(".newBookCard");
-  newBookBtn.onclick = () => renderForm();
+  newButton.onclick = () => renderForm();
+  showNewBook = !showNewBook;
 }
 
 function renderForm() {
-  const formContent = `<div id="form">
+  const formContent = `<form id="form" class="form">
     <table>
       <tr>
         <td>Title</td>
-        <td>Title Input</td>
+        <td><input type="text" name="title" required></td>
       </tr>
       <tr>
         <td>Author</td>
-        <td>Author Input</td>
+        <td><input type="text" name="author" required></td>
       </tr>
       <tr>
         <td>Pages</td>
-        <td>Pages Input</td>
+        <td><input type="number" name="pages" required></td>
       </tr>
       <tr>
         <td>Read?</td>
-        <td>Read Toggle</td>
+        <td><input type="checkbox" name="read"></td>
       </tr>
+      <tr>
+      <td><button type="submit">Submit</button></td>
+      <td><button onclick="render()">Cancel</button></td>
+    </tr>
     </table>
-  </div>`;
-  const form = document.querySelector("#form");
+  </form>`;
+
   if (showNewBook) {
     render();
   } else {
-    newBookBtn.innerHTML = formContent;
+    let newBookDiv = document.querySelector(".newBookCard");
+    newBookDiv.innerHTML = formContent;
+    const form = document.querySelector("#form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      addBookToLibrary(
+        this.form.author.value,
+        this.form.title.value,
+        this.form.pages.value,
+        this.form.read.value
+      );
+      render();
+    });
   }
   showNewBook = !showNewBook;
 }
