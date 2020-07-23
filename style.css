@@ -7,8 +7,15 @@
   border-radius: 8px;
 }
 
+.newBookCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
   background-color: darkcyan;
+  padding: 0px 2rem;
 }
 
 #container {
@@ -18,5 +25,5 @@ body {
 
 h1 {
   text-align: center;
-  color: lightgray;
+  color: rgb(241, 241, 241);
 }
