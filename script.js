@@ -2,20 +2,21 @@ let showNewBook = false;
 const container = document.querySelector("#container");
 let myLibrary = [];
 
-function Book(author, title, pages, read) {
-  this.author = author;
-  this.title = title;
-  this.pages = pages;
-  this.read = read;
+class BookBuilder {
+  constructor(author, title, pages, read) {
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
+  }
+  toggleRead() {
+    this.read = !this.read;
+    render();
+  }
 }
 
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-  render();
-};
-
 function addBookToLibrary(author, title, pages, read) {
-  let book = new Book(author, title, pages, read);
+  let book = new BookBuilder(author, title, pages, read);
   myLibrary.push(book);
 }
 
